@@ -1,0 +1,13 @@
+source("load_file.R")
+par(mfrow=c(2,2))
+with(focused.dates, {
+  plot(date.time, Global_active_power, type="l", xlab="", ylab="Global Active Power")
+  plot(date.time, Voltage, type="l", xlab="datetime", ylab="Voltage")
+  plot(date.time, Sub_metering_1, type="l", xlab="", ylab="Energy sub metering")
+  lines(date.time, Sub_metering_2, col="red")
+  lines(date.time, Sub_metering_3, col="blue")
+  legend("topright", lwd="1", col=c("black", "red", "blue"), legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), cex=0.50)
+  plot(date.time, Global_reactive_power, xlab="datetime", type="l")
+})
+dev.copy(png, file="plot4.png", height=480, width=480)
+dev.off()
